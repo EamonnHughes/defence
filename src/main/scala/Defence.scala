@@ -1,6 +1,5 @@
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
-import processing.core.PConstants._
 
 class Defence extends PApplet {
   var time: Long = System.currentTimeMillis
@@ -22,7 +21,7 @@ class Defence extends PApplet {
     updateTick()
   }
   def updateTick(): Unit = {
-    var currentTime = System.currentTimeMillis
+    val currentTime = System.currentTimeMillis
     if (currentTime > time + 100) {
       tTick = (tTick + 1) % 10
       time = currentTime
