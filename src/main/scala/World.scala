@@ -6,4 +6,8 @@ object World {
       Squad(10, 4, Location(33, 16), 1)
     )
 
+  var terrain = List(
+    Room(Location(2, 2), 16, 16)
+  )
+
 }
