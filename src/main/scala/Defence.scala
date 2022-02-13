@@ -13,6 +13,7 @@ class Defence extends PApplet {
 
   override def draw(): Unit = {
     background(100, 100, 100)
+    World.squadList.foreach(squad => squad.draw(this))
   }
 }
 object Defence extends App {
