@@ -5,12 +5,10 @@ class Defence extends PApplet {
   var time: Long = System.currentTimeMillis
   var tTick = 0
 
-  val BoardWidth = 1024
-  val BoardHeight = 512
   override def setup(): Unit = {}
 
   override def settings(): Unit = {
-    size(BoardWidth, BoardHeight)
+    fullScreen()
   }
 
   override def draw(): Unit = {
