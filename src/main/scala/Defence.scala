@@ -1,5 +1,6 @@
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
+import processing.core.PConstants._
 
 class Defence extends PApplet {
   var time: Long = System.currentTimeMillis
@@ -25,6 +26,28 @@ class Defence extends PApplet {
     if (currentTime > time + 100) {
       tTick = (tTick + 1) % 10
       time = currentTime
+      println(World.selectedUnits)
+    }
+  }
+  def spawnFoe(): Unit = {
+    World.squadList = Squad(10, 4, Location(2, 2), 1) :: World.squadList
+  }
+
+  override def mousePressed(event: MouseEvent): Unit = {
+
+    if (
+      event.isShiftDown && !World.selectedUnits.contains(
+        World.findSquad(
+          Location(mouseX / 16, mouseY / 16)
+        )
+      )
+    ) {
+      World.selectedUnits = World.findSquad(
+        Location(mouseX / 16, mouseY / 16)
+      ) :: World.selectedUnits
+    } else if (!event.isShiftDown) {
+      World.selectedUnits =
+        World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
     }
   }
 }
