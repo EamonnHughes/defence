@@ -2,6 +2,8 @@ import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
 
 class Defence extends PApplet {
+  var time: Long = System.currentTimeMillis
+  var tTick = 0
 
   val BoardWidth = 1024
   val BoardHeight = 512
@@ -16,6 +18,14 @@ class Defence extends PApplet {
 
     World.terrain.foreach(terrain => terrain.draw(this))
     World.squadList.foreach(squad => squad.draw(this))
+    updateTick()
+  }
+  def updateTick(): Unit = {
+    var currentTime = System.currentTimeMillis
+    if (currentTime > time + 100) {
+      tTick = (tTick + 1) % 10
+      time = currentTime
+    }
   }
 }
 object Defence extends App {
