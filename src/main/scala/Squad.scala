@@ -1,6 +1,6 @@
 import processing.core.PApplet
 
-class Squad(
+case class Squad(
     nOfUnits: Int,
     morale: Int,
     location: Location,
