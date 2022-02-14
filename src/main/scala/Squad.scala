@@ -12,6 +12,11 @@ case class Squad(
     } else {
       p.fill(255, 255, 0)
     }
+    if (World.selectedUnits.contains(this)) {
+      p.stroke(255, 255, 0)
+    } else {
+      p.stroke(0, 0, 0)
+    }
     p.rect(location.x * 16, location.y * 16, 16, 16)
   }
 
