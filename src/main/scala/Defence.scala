@@ -8,7 +8,7 @@ class Defence extends PApplet {
   override def setup(): Unit = {}
 
   override def settings(): Unit = {
-    fullScreen()
+    size(1024, 1024)
   }
 
   override def draw(): Unit = {
@@ -16,6 +16,15 @@ class Defence extends PApplet {
 
     World.terrain.foreach(terrain => terrain.draw(this))
     World.squadList.foreach(squad => squad.draw(this))
+    World.navigableLocations = for {
+      x <- (0 until 64).toList
+      y <- (0 until 64).toList
+      if (World.terrain.exists(room =>
+        x < room.location.x + room.dstx && x >= room.location.x && y < room.location.y + room.dstx && y >= room.location.y
+      )
+      )
+    } yield Location(x, y)
+    World.navigableLocations.foreach(loc => rect(loc.x * 16, loc.y * 16, 1, 1))
     updateTick()
   }
   def updateTick(): Unit = {
@@ -23,7 +32,6 @@ class Defence extends PApplet {
     if (currentTime > time + 100) {
       tTick = (tTick + 1) % 10
       time = currentTime
-      println(World.selectedUnits)
     }
   }
   def spawnFoe(): Unit = {
@@ -51,6 +59,12 @@ class Defence extends PApplet {
     ) {
       World.selectedUnits =
         World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
+    } else if (
+      World.findSquad(
+        Location(mouseX / 16, mouseY / 16)
+      ) == null
+    ) {
+      World.selectedUnits = Nil
     }
   }
 }

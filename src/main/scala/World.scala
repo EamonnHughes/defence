@@ -2,8 +2,8 @@ object World {
   var squadList =
     List(
       Squad(10, 4, Location(16, 16), 0),
-      Squad(10, 4, Location(16, 18), 0),
-      Squad(10, 4, Location(16, 20), 0)
+      Squad(10, 4, Location(16, 14), 0),
+      Squad(10, 4, Location(16, 12), 0)
     )
 
   var terrain = List(
@@ -14,5 +14,6 @@ object World {
   def findSquad(location: Location): Squad = { // null
     squadList.find(thing => thing.location == location).orNull
   }
+  var navigableLocations = List.empty[Location]
 
 }
