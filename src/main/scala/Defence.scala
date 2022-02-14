@@ -37,12 +37,18 @@ class Defence extends PApplet {
         World.findSquad(
           Location(mouseX / 16, mouseY / 16)
         )
-      )
+      ) && World.findSquad(
+        Location(mouseX / 16, mouseY / 16)
+      ) != null
     ) {
       World.selectedUnits = World.findSquad(
         Location(mouseX / 16, mouseY / 16)
       ) :: World.selectedUnits
-    } else if (!event.isShiftDown) {
+    } else if (
+      !event.isShiftDown && World.findSquad(
+        Location(mouseX / 16, mouseY / 16)
+      ) != null
+    ) {
       World.selectedUnits =
         World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
     }
