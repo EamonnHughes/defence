@@ -6,4 +6,11 @@ case class Room(location: Location, dstx: Int, dsty: Int) {
     p.rect(location.x * 16, location.y * 16, dstx * 16, dsty * 16)
 
   }
+  def isInRoom(loc: Location): Boolean = {
+    if (
+      loc.x < location.x + dstx && loc.x >= location.x && loc.y < location.y + dsty && loc.y >= location.y
+    ) { true }
+    else { false }
+
+  }
 }
