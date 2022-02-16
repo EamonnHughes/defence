@@ -19,10 +19,10 @@ class Defence extends PApplet {
     World.navigableLocations = for {
       x <- (0 until 64).toList
       y <- (0 until 64).toList
-      if (World.terrain.exists(room =>
+      if World.terrain.exists(room =>
         x < room.location.x + room.dstx && x >= room.location.x && y < room.location.y + room.dstx && y >= room.location.y
       )
-      )
+
     } yield Location(x, y)
     World.navigableLocations.foreach(loc => rect(loc.x * 16, loc.y * 16, 1, 1))
     updateTick()
