@@ -11,7 +11,8 @@ case class Squad(
 
   def navigateTo(loc: Location): Unit = {
     destination = loc
-    pathToDest = Navigation.findPath(destination, location)
+    pathToDest =
+      Navigation.findPath(destination, location).flatMap(path => path.tail)
   }
 
   def draw(p: PApplet): Unit = {
@@ -34,11 +35,12 @@ case class Squad(
     for {
       path <- pathToDest
     } {
-      pathToDest = path.tail
       val nextLoc = path.getHead
-      location = nextLoc
+      if (!World.squadList.exists(squad => squad.location == nextLoc)) {
+        location = nextLoc
 
-      println("Move " + location + pathToDest)
+        pathToDest = path.tail
+      }
 
     }
 
