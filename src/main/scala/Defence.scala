@@ -18,9 +18,6 @@ class Defence extends PApplet {
     World.terrain.foreach(terrain => terrain.draw(this))
 
     fill(255, 0, 0, 50)
-    World.selectedUnits.foreach(unit =>
-
-    )
     World.squadList.foreach(squad => squad.draw(this))
     World.navigableLocations = for {
       x <- (0 until 64).toList
@@ -40,8 +37,9 @@ class Defence extends PApplet {
 
     if (mouseButton == 39) {
       World.selectedUnits.foreach(unit =>
-        unit.destination =
+        unit.navigateTo(
           Location((mouseX / 16).floor.toInt, (mouseY / 16).ceil.toInt)
+        )
       )
     }
     if (mouseButton == 37) {
@@ -80,6 +78,7 @@ class Defence extends PApplet {
     if (currentTime > time + 100) {
       tTick = (tTick + 1) % 10
       time = currentTime
+      World.squadList.foreach(squad => squad.moveSquad())
     }
   }
   def spawnFoe(): Unit = {

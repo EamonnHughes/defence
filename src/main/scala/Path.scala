@@ -4,6 +4,14 @@ case class Path(points: List[Location]) {
   def getHead: Location = {
     points.head
   }
+  def tail: Option[Path] = {
+    if (points.length > 1) {
+      Some(Path(points.tail))
+    } else {
+      None
+    }
+
+  }
   def add(location: Location): Path = {
     Path(location :: points)
   }
