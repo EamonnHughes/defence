@@ -1,4 +1,6 @@
 object Navigation {
-  def makePaths(): List[Path] = {}
-  def navUnit(): Path = {}
+  def makePaths(start: Location, finish: Location): Path = {
+    var paths = List(Path(List(start)))
+
+  }
 }
