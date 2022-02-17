@@ -42,35 +42,39 @@ class Defence extends PApplet {
   }
   override def mousePressed(event: MouseEvent): Unit = {
 
-    World.selectedUnits.foreach(unit =>
-      unit.destination =
-        Location((mouseX / 16).floor.toInt, (mouseY / 16).ceil.toInt)
-    )
-    if (
-      event.isShiftDown && !World.selectedUnits.contains(
+    if (mouseButton == 39) {
+      World.selectedUnits.foreach(unit =>
+        unit.destination =
+          Location((mouseX / 16).floor.toInt, (mouseY / 16).ceil.toInt)
+      )
+    }
+    if (mouseButton == 37) {
+      if (
+        event.isShiftDown && !World.selectedUnits.contains(
+          World.findSquad(
+            Location(mouseX / 16, mouseY / 16)
+          )
+        ) && World.findSquad(
+          Location(mouseX / 16, mouseY / 16)
+        ) != null
+      ) {
+        World.selectedUnits = World.findSquad(
+          Location(mouseX / 16, mouseY / 16)
+        ) :: World.selectedUnits
+      } else if (
+        !event.isShiftDown && World.findSquad(
+          Location(mouseX / 16, mouseY / 16)
+        ) != null
+      ) {
+        World.selectedUnits =
+          World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
+      } else if (
         World.findSquad(
           Location(mouseX / 16, mouseY / 16)
-        )
-      ) && World.findSquad(
-        Location(mouseX / 16, mouseY / 16)
-      ) != null
-    ) {
-      World.selectedUnits = World.findSquad(
-        Location(mouseX / 16, mouseY / 16)
-      ) :: World.selectedUnits
-    } else if (
-      !event.isShiftDown && World.findSquad(
-        Location(mouseX / 16, mouseY / 16)
-      ) != null
-    ) {
-      World.selectedUnits =
-        World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
-    } else if (
-      World.findSquad(
-        Location(mouseX / 16, mouseY / 16)
-      ) == null
-    ) {
-      World.selectedUnits = Nil
+        ) == null
+      ) {
+        World.selectedUnits = Nil
+      }
     }
 
   }
