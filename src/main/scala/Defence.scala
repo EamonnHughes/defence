@@ -5,9 +5,7 @@ class Defence extends PApplet {
   var time: Long = System.currentTimeMillis
   var tTick = 0
 
-  override def setup(): Unit = {
-    println(Navigation.findPath(Location(16, 16), Location(26, 16)))
-  }
+  override def setup(): Unit = {}
 
   override def settings(): Unit = {
     size(1024, 1024)
@@ -18,16 +16,25 @@ class Defence extends PApplet {
     background(100, 100, 100)
 
     World.terrain.foreach(terrain => terrain.draw(this))
+    for {
+      path <- Navigation.findPath(Location(16, 16), Location(30, 16))
+      loc <- path.points
+    } {
+      fill(255, 0, 0)
+      rect(loc.x * 16, loc.y * 16, 16, 16)
+    }
     World.squadList.foreach(squad => squad.draw(this))
     World.navigableLocations = for {
       x <- (0 until 64).toList
       y <- (0 until 64).toList
-      if World.terrain.exists(room =>
-        x < room.location.x + room.dstx && x >= room.location.x && y < room.location.y + room.dstx && y >= room.location.y
-      )
+      if World.terrain.exists(room => room.isInRoom(Location(x, y)))
 
     } yield Location(x, y)
-    World.navigableLocations.foreach(loc => rect(loc.x * 16, loc.y * 16, 1, 1))
+    fill(255, 0, 255, 25)
+    World.navigableLocations.foreach(loc =>
+      rect(loc.x * 16, loc.y * 16, 16, 16)
+    )
+
     updateTick()
   }
   def updateTick(): Unit = {
