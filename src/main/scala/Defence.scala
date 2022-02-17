@@ -19,11 +19,7 @@ class Defence extends PApplet {
 
     fill(255, 0, 0, 50)
     World.selectedUnits.foreach(unit =>
-      Navigation
-        .findPath(unit.location, unit.destination)
-        .foreach(path =>
-          path.points.foreach(point => rect(point.x * 16, point.y * 16, 16, 16))
-        )
+
     )
     World.squadList.foreach(squad => squad.draw(this))
     World.navigableLocations = for {

@@ -7,7 +7,9 @@ case class Squad(
     var side: Int,
     var destination: Location
 ) {
+  var pathFromDest = Navigation.findPath(location, destination)
   def draw(p: PApplet): Unit = {
+
     if (side == 0) {
       p.fill(0, 255, 0)
     } else {
@@ -19,6 +21,14 @@ case class Squad(
       p.noStroke()
     }
     p.rect(location.x * 16, location.y * 16, 16, 16)
+  }
+  def moveSquad: Unit = {
+    val movX = math.signum(destination.x - location.x)
+    val movY = math.signum(destination.y - location.y)
+    var newLoc = Location(location.x + movX, location.y + movY)
+    // if empty
+    location = newLoc
+
   }
 
 }
