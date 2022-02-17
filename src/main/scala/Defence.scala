@@ -15,16 +15,16 @@ class Defence extends PApplet {
 
     background(100, 100, 100)
 
-    fill(255, 0, 0)
-
     World.terrain.foreach(terrain => terrain.draw(this))
-    for {
-      path <- Navigation.findPath(Location(16, 16), Location(30, 16))
-      loc <- path.points
-    } {
-      fill(255, 0, 0)
-      rect(loc.x * 16, loc.y * 16, 16, 16)
-    }
+
+    fill(255, 0, 0, 50)
+    World.selectedUnits.foreach(unit =>
+      Navigation
+        .findPath(unit.location, unit.destination)
+        .foreach(path =>
+          path.points.foreach(point => rect(point.x * 16, point.y * 16, 16, 16))
+        )
+    )
     World.squadList.foreach(squad => squad.draw(this))
     World.navigableLocations = for {
       x <- (0 until 64).toList
