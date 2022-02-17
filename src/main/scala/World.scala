@@ -7,7 +7,9 @@ object World {
     )
 
   var terrain = List(
-    Room(Location(2, 2), 16, 16)
+    Room(Location(2, 2), 16, 16),
+    Room(Location(18, 3), 2, 1),
+    Room(Location(20, 2), 16, 16)
   )
 
   var selectedUnits = List.empty[Squad]

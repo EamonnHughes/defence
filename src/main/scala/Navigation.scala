@@ -3,12 +3,18 @@ import sun.security.ec.point.ProjectivePoint.Mutable
 import scala.collection.mutable
 
 object Navigation {
-  def makePaths(start: Location, finish: Location): Path = {
-    var visitedCells = mutable.Set.empty[Location]
+  def findPath(start: Location, finish: Location): Option[Path] = {
+    val visitedCells = mutable.Set.empty[Location]
     var paths = List(Path(List(start)))
-
+    while (!paths.exists(path => path.getHead == finish) && paths.nonEmpty) {
+      paths = for {
+        path <- paths
+        newPath <- path.extendPaths(visitedCells)
+      } yield {
+        newPath
+      }
+    }
+    paths.find(path => path.getHead == finish)
   }
-
-  def extendPaths(path: Path, visCells: List[Location]): List[Path] = {}
 
 }

@@ -5,13 +5,16 @@ class Defence extends PApplet {
   var time: Long = System.currentTimeMillis
   var tTick = 0
 
-  override def setup(): Unit = {}
+  override def setup(): Unit = {
+    println(Navigation.findPath(Location(16, 16), Location(26, 16)))
+  }
 
   override def settings(): Unit = {
     size(1024, 1024)
   }
 
   override def draw(): Unit = {
+
     background(100, 100, 100)
 
     World.terrain.foreach(terrain => terrain.draw(this))
