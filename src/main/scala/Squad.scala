@@ -1,10 +1,11 @@
 import processing.core.PApplet
 
 case class Squad(
-    nOfUnits: Int,
-    morale: Int,
-    location: Location,
-    side: Int
+    var nOfUnits: Int,
+    var morale: Int,
+    var location: Location,
+    var side: Int,
+    var destination: Location
 ) {
   def draw(p: PApplet): Unit = {
     if (side == 0) {

@@ -15,6 +15,8 @@ class Defence extends PApplet {
 
     background(100, 100, 100)
 
+    fill(255, 0, 0)
+
     World.terrain.foreach(terrain => terrain.draw(this))
     for {
       path <- Navigation.findPath(Location(16, 16), Location(30, 16))
@@ -37,19 +39,12 @@ class Defence extends PApplet {
 
     updateTick()
   }
-  def updateTick(): Unit = {
-    val currentTime = System.currentTimeMillis
-    if (currentTime > time + 100) {
-      tTick = (tTick + 1) % 10
-      time = currentTime
-    }
-  }
-  def spawnFoe(): Unit = {
-    World.squadList = Squad(10, 4, Location(2, 2), 1) :: World.squadList
-  }
-
   override def mousePressed(event: MouseEvent): Unit = {
 
+    World.selectedUnits.foreach(unit =>
+      unit.destination =
+        Location((mouseX / 16).floor.toInt, (mouseY / 16).ceil.toInt)
+    )
     if (
       event.isShiftDown && !World.selectedUnits.contains(
         World.findSquad(
@@ -76,7 +71,21 @@ class Defence extends PApplet {
     ) {
       World.selectedUnits = Nil
     }
+
   }
+
+  def updateTick(): Unit = {
+    val currentTime = System.currentTimeMillis
+    if (currentTime > time + 100) {
+      tTick = (tTick + 1) % 10
+      time = currentTime
+    }
+  }
+  def spawnFoe(): Unit = {
+    World.squadList =
+      Squad(10, 4, Location(2, 2), 1, Location(2, 2)) :: World.squadList
+  }
+
 }
 object Defence extends App {
   PApplet.main(classOf[Defence])

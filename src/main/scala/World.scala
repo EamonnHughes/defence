@@ -1,9 +1,9 @@
 object World {
   var squadList =
     List(
-      Squad(10, 4, Location(16, 16), 0),
-      Squad(10, 4, Location(16, 14), 0),
-      Squad(10, 4, Location(16, 12), 0)
+      Squad(10, 4, Location(16, 16), 0, Location(16, 16)),
+      Squad(10, 4, Location(16, 14), 0, Location(16, 14)),
+      Squad(10, 4, Location(16, 12), 0, Location(16, 12))
     )
 
   var terrain = List(
