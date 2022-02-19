@@ -12,6 +12,8 @@ class Defence extends PApplet {
   }
 
   override def draw(): Unit = {
+    World.unselectedUnits =
+      World.squadList.filterNot(Squad => World.selectedUnits.contains(Squad))
 
     background(100, 100, 100)
 

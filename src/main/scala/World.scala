@@ -22,6 +22,7 @@ object World {
   )
 
   var selectedUnits = List.empty[Squad]
+  var unselectedUnits = List.empty[Squad]
   def findSquad(location: Location): Squad = { // null
     squadList.find(thing => thing.location == location).orNull
   }
