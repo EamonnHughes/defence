@@ -14,18 +14,6 @@ case class Squad(
     pathToDest =
       Navigation.findPath(destination, location).flatMap(path => path.tail)
   }
-  def selectDestination(p: PApplet): Unit = {
-    var dest = Location((p.mouseX / 16).floor.toInt, (p.mouseY / 16).ceil.toInt)
-    var adjs = dest.findAdjacents
-    if (!World.goToLocs.contains(dest)) {
-      navigateTo(dest)
-
-      World.goToLocs = destination :: World.goToLocs
-    } else {
-      navigateTo(adjs.head)
-      adjs = adjs.tail
-    }
-  }
 
   def draw(p: PApplet): Unit = {
 
@@ -34,7 +22,7 @@ case class Squad(
     } else {
       p.fill(255, 255, 0)
     }
-    if (World.selectedUnits.contains(this)) {
+    if (World.selectedUnits.Units.contains(this)) {
       p.stroke(255, 255, 0)
     } else {
       p.noStroke()

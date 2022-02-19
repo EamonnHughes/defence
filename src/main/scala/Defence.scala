@@ -12,8 +12,9 @@ class Defence extends PApplet {
   }
 
   override def draw(): Unit = {
-    World.unselectedUnits =
-      World.squadList.filterNot(Squad => World.selectedUnits.contains(Squad))
+    World.unselectedUnits.Units = World.squadList.filterNot(Squad =>
+      World.selectedUnits.Units.contains(Squad)
+    )
 
     background(100, 100, 100)
 
@@ -38,11 +39,11 @@ class Defence extends PApplet {
   override def mousePressed(event: MouseEvent): Unit = {
 
     if (mouseButton == 39) {
-      World.selectedUnits.foreach(unit => unit.selectDestination(this))
+      World.selectedUnits.setDestinations(this)
     }
     if (mouseButton == 37) {
       if (
-        event.isShiftDown && !World.selectedUnits.contains(
+        event.isShiftDown && !World.selectedUnits.Units.contains(
           World.findSquad(
             Location(mouseX / 16, mouseY / 16)
           )
@@ -50,22 +51,22 @@ class Defence extends PApplet {
           Location(mouseX / 16, mouseY / 16)
         ) != null
       ) {
-        World.selectedUnits = World.findSquad(
+        World.selectedUnits.Units = World.findSquad(
           Location(mouseX / 16, mouseY / 16)
-        ) :: World.selectedUnits
+        ) :: World.selectedUnits.Units
       } else if (
         !event.isShiftDown && World.findSquad(
           Location(mouseX / 16, mouseY / 16)
         ) != null
       ) {
-        World.selectedUnits =
+        World.selectedUnits.Units =
           World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
       } else if (
         World.findSquad(
           Location(mouseX / 16, mouseY / 16)
         ) == null
       ) {
-        World.selectedUnits = Nil
+        World.selectedUnits.Units = Nil
       }
     }
 

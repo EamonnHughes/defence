@@ -22,8 +22,8 @@ object World {
   )
   var goToLocs = List.empty[Location]
 
-  var selectedUnits = List.empty[Squad]
-  var unselectedUnits = List.empty[Squad]
+  var selectedUnits = Squadgroup(List.empty, List.empty, Location(5, 5))
+  var unselectedUnits = Squadgroup(List.empty, List.empty, Location(5, 5))
   def findSquad(location: Location): Squad = { // null
     squadList.find(thing => thing.location == location).orNull
   }
