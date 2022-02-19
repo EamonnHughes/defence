@@ -31,7 +31,6 @@ case class Squad(
   }
   def moveSquad(): Unit = {
 
-    println(pathToDest)
     for {
       path <- pathToDest
     } {
