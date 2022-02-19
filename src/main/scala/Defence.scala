@@ -38,11 +38,7 @@ class Defence extends PApplet {
   override def mousePressed(event: MouseEvent): Unit = {
 
     if (mouseButton == 39) {
-      World.selectedUnits.foreach(unit =>
-        unit.navigateTo(
-          Location((mouseX / 16).floor.toInt, (mouseY / 16).ceil.toInt)
-        )
-      )
+      World.selectedUnits.foreach(unit => unit.selectDestination(this))
     }
     if (mouseButton == 37) {
       if (
