@@ -15,10 +15,16 @@ case class Squad(
       Navigation.findPath(destination, location).flatMap(path => path.tail)
   }
   def selectDestination(p: PApplet): Unit = {
-    navigateTo(
-      Location((p.mouseX / 16).floor.toInt, (p.mouseY / 16).ceil.toInt)
-    )
-    World.goToLocs = destination :: World.goToLocs
+    var dest = Location((p.mouseX / 16).floor.toInt, (p.mouseY / 16).ceil.toInt)
+    var adjs = dest.findAdjacents
+    if (!World.goToLocs.contains(dest)) {
+      navigateTo(dest)
+
+      World.goToLocs = destination :: World.goToLocs
+    } else {
+      navigateTo(adjs.head)
+      adjs = adjs.tail
+    }
   }
 
   def draw(p: PApplet): Unit = {
