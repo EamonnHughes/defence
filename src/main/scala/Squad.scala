@@ -36,11 +36,10 @@ case class Squad(
       path <- pathToDest
     } {
       val nextLoc = path.getHead
-      if (!World.squadList.exists(squad => squad.location == nextLoc)) {
-        location = nextLoc
 
-        pathToDest = path.tail
-      }
+      location = nextLoc
+
+      pathToDest = path.tail
 
     }
 
