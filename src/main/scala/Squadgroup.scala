@@ -1,6 +1,6 @@
 case class Squadgroup(
     formationPoints: List[Location],
-    numOfUnits: List[Squad]
+    Units: List[Squad]
 ) {
   def formUp: Unit = {}
 }
