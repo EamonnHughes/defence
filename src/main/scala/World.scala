@@ -20,6 +20,7 @@ object World {
     Room(Location(18, 3), 2, 1),
     Room(Location(20, 2), 16, 16)
   )
+  var goToLocs = List.empty[Location]
 
   var selectedUnits = List.empty[Squad]
   var unselectedUnits = List.empty[Squad]

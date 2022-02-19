@@ -18,6 +18,7 @@ case class Squad(
     navigateTo(
       Location((p.mouseX / 16).floor.toInt, (p.mouseY / 16).ceil.toInt)
     )
+    World.goToLocs = destination :: World.goToLocs
   }
 
   def draw(p: PApplet): Unit = {
