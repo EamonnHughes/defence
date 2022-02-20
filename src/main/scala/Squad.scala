@@ -22,7 +22,7 @@ case class Squad(
     } else {
       p.fill(255, 255, 0)
     }
-    if (World.selectedUnits.Units.contains(this)) {
+    if (World.selectedUnits.units.contains(this)) {
       p.stroke(255, 255, 0)
     } else {
       p.noStroke()

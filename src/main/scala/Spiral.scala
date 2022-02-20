@@ -18,3 +18,14 @@ case class Spiral(var location: Location) {
     oLoc
   }
 }
+
+object Spiral {
+  def lazyList(location: Location): LazyList[Location] = {
+    val spiral = Spiral(location)
+    LazyList.continually(spiral.next)
+  }
+
+  val ll = Spiral.lazyList(Location(0, 0))
+
+  ll.filter(loc => loc.x > 0).take(4).toList
+}
