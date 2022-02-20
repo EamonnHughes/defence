@@ -4,6 +4,7 @@ case class Spiral(var location: Location) {
   var currentTick = 0
   var delta = Delta(0, 1)
   def next: Location = {
+    val oLoc = location
     location = location + delta
     currentTick += 1
     if (currentTick == nextInterval) {
@@ -14,7 +15,6 @@ case class Spiral(var location: Location) {
       }
 
     }
-    location
-
+    oLoc
   }
 }

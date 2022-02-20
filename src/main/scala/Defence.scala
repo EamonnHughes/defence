@@ -19,6 +19,10 @@ class Defence extends PApplet {
     background(100, 100, 100)
 
     World.terrain.foreach(terrain => terrain.draw(this))
+    fill(0, 0, 0)
+    World.selectedUnits.formationPoints.foreach(point =>
+      rect(point.x * 16, point.y * 16, 2, 2)
+    )
 
     fill(255, 0, 0, 50)
     World.squadList.foreach(squad => squad.draw(this))
