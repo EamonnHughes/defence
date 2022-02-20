@@ -26,6 +26,8 @@ class Defence extends PApplet {
 
     fill(255, 0, 0, 50)
     World.squadList.foreach(squad => squad.draw(this))
+
+    World.squadList.foreach(squad => squad.navigateTo(squad.destination))
     World.navigableLocations = for {
       x <- (0 until 64).toList
       y <- (0 until 64).toList
