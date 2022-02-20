@@ -12,4 +12,15 @@ case class Location(x: Int, y: Int) {
     )
     adj
   }
+
+  def +(delta: Delta): Location = {
+    Location(x + delta.dx, y + delta.dy)
+  }
+}
+
+case class Delta(dx: Int, dy: Int) {
+  def rotate: Delta = {
+    if (dx == 0) Delta(dy, 0)
+    else Delta(0, -dx)
+  }
 }
