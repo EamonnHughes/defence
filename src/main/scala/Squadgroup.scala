@@ -14,6 +14,9 @@ case class Squadgroup(
       .filter(loc => World.terrain.exists(room => room.isInRoom(loc)))
       .take(units.length)
       .toList
+    for (i <- 0 until units.length) {
+      units(i).destination = formationPoints(i)
+    }
 
   }
 
