@@ -6,6 +6,7 @@ case class Squadgroup(
     var Destination: Location
 ) {
   def setDestinations(p: PApplet): Unit = {
+    formationPoints = List.empty
     val dest = Location((p.mouseX / 16).floor.toInt, (p.mouseY / 16).ceil.toInt)
     val spiral = Spiral(dest)
     for (unit <- Units) {
