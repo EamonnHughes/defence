@@ -14,4 +14,5 @@ case class Projectile(
     p.fill(255, 75, 0)
     p.ellipse(location.x * 16, location.y * 16, 8, 8)
   }
+  def setDelta: Unit = {}
 }
