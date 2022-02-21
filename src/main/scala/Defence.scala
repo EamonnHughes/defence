@@ -1,11 +1,16 @@
+import processing.awt.PGraphicsJava2D
 import processing.core._
 import processing.event.{KeyEvent, MouseEvent}
+import processing.opengl.PGraphicsOpenGL
 
 class Defence extends PApplet {
   var time: Long = System.currentTimeMillis
   var tTick = 0
 
-  override def setup(): Unit = {}
+  override def setup(): Unit = {
+    Squad.loadImages(this)
+    noSmooth()
+  }
 
   override def settings(): Unit = {
     size(1024, 1024)

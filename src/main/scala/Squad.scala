@@ -1,4 +1,4 @@
-import processing.core.PApplet
+import processing.core.{PApplet, PImage}
 
 case class Squad(
     var nOfUnits: Int,
@@ -17,7 +17,6 @@ case class Squad(
   }
 
   def draw(p: PApplet): Unit = {
-    val Trawler = p.loadImage("src/main/Resources/Trawler.png")
 
     if (side == 0) {
       p.fill(0, 255, 0)
@@ -31,7 +30,7 @@ case class Squad(
     }
     p.noFill()
     p.rect(location.x * 16, location.y * 16, 16, 16)
-    p.image(Trawler, location.x * 16, location.y * 16, 16, 16)
+    p.image(Squad.Trawler, location.x * 16, location.y * 16, 16, 16)
 
   }
   def moveSquad(): Unit = {
@@ -50,4 +49,12 @@ case class Squad(
 
   }
 
+}
+
+object Squad {
+  var Trawler: PImage = _
+  def loadImages(p: PApplet): Unit = {
+    Trawler = p.loadImage("src/main/Resources/Trawler.png")
+
+  }
 }
