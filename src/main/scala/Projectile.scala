@@ -9,7 +9,6 @@ case class Projectile(
   def moveProjectile: Unit = {
     location = delta.moveByDelta(location)
   }
-
   def draw(p: PApplet): Unit = {
     p.fill(255, 75, 0)
     p.ellipse(location.x * 16, location.y * 16, 8, 8)
