@@ -7,6 +7,7 @@ case class Squad(
     var side: Int,
     var destination: Location
 ) {
+
   var pathToDest = Option.empty[Path]
 
   def navigateTo(loc: Location): Unit = {
@@ -16,6 +17,7 @@ case class Squad(
   }
 
   def draw(p: PApplet): Unit = {
+    val Trawler = p.loadImage("src/main/Resources/Trawler.png")
 
     if (side == 0) {
       p.fill(0, 255, 0)
@@ -27,7 +29,9 @@ case class Squad(
     } else {
       p.noStroke()
     }
+    p.noFill()
     p.rect(location.x * 16, location.y * 16, 16, 16)
+    p.image(Trawler, location.x * 16, location.y * 16, 16, 16)
   }
   def moveSquad(): Unit = {
 
