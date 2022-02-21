@@ -91,7 +91,7 @@ class Defence extends PApplet {
       time = currentTime
       World.squadList.foreach(squad => squad.moveSquad())
       World.squadList.foreach(squad => squad.fireOnFoes)
-      World.squadList.filter(unit => unit.health > 0)
+      World.squadList = World.squadList.filter(unit => unit.health > 0)
 
     }
   }
