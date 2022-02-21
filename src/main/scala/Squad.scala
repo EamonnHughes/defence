@@ -22,13 +22,13 @@ case class Squad(
       p.fill(0, 255, 0)
     } else {
       p.fill(255, 255, 0)
+
     }
     if (World.selectedUnits.units.contains(this)) {
       p.stroke(255, 255, 0)
     } else {
       p.noStroke()
     }
-    p.noFill()
     p.rect(location.x * 16, location.y * 16, 16, 16)
     p.image(Squad.Trawler, location.x * 16, location.y * 16, 16, 16)
 
