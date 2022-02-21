@@ -9,11 +9,11 @@ class Defence extends PApplet {
 
   override def setup(): Unit = {
     Squad.loadImages(this)
-    noSmooth()
   }
 
   override def settings(): Unit = {
     size(1024, 1024)
+    noSmooth()
   }
 
   override def draw(): Unit = {
