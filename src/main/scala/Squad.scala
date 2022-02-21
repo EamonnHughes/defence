@@ -32,6 +32,7 @@ case class Squad(
     p.noFill()
     p.rect(location.x * 16, location.y * 16, 16, 16)
     p.image(Trawler, location.x * 16, location.y * 16, 16, 16)
+
   }
   def moveSquad(): Unit = {
 
