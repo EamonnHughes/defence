@@ -58,9 +58,13 @@ case class Squad(
       if eSquad.location.x > location.x - 5
       if eSquad.location.y < location.x + 5
       if eSquad.location.y > location.x - 5
-    } println("fire on " + eSquad)
+    } {
+      println("fire on " + eSquad)
+      eSquad.health -= 1
+    }
 
   }
+
 }
 object Squad {
   var Trawler: PImage = _
