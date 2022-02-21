@@ -13,7 +13,17 @@ object World {
       Squad(10, 4, Location(16, 9), 0, Location(16, 9)),
       Squad(10, 4, Location(16, 7), 0, Location(16, 7)),
       Squad(10, 4, Location(16, 5), 0, Location(16, 5)),
-      Squad(10, 4, Location(14, 16), 1, Location(14, 16))
+      Squad(10, 4, Location(14, 16), 1, Location(14, 16)),
+      Squad(10, 4, Location(14, 14), 1, Location(16, 14)),
+      Squad(10, 4, Location(14, 12), 1, Location(16, 12)),
+      Squad(10, 4, Location(14, 10), 1, Location(16, 10)),
+      Squad(10, 4, Location(14, 8), 1, Location(16, 8)),
+      Squad(10, 4, Location(14, 6), 1, Location(16, 6)),
+      Squad(10, 4, Location(14, 15), 1, Location(16, 15)),
+      Squad(10, 4, Location(14, 13), 1, Location(16, 13)),
+      Squad(10, 4, Location(14, 11), 1, Location(16, 11)),
+      Squad(10, 4, Location(14, 9), 1, Location(16, 9)),
+      Squad(10, 4, Location(14, 7), 1, Location(16, 7))
     )
 
   var terrain = List(

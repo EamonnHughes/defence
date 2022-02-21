@@ -90,9 +90,11 @@ class Defence extends PApplet {
       tTick = (tTick + 1) % 10
       time = currentTime
       World.squadList.foreach(squad => squad.moveSquad())
-      World.squadList.foreach(squad => squad.fireOnFoes)
       World.squadList = World.squadList.filter(unit => unit.health > 0)
 
+    }
+    if (tTick % 2 == 0) {
+      World.squadList.foreach(squad => squad.fireOnFoes)
     }
   }
   def spawnFoe(): Unit = {

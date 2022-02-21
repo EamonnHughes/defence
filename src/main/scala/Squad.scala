@@ -50,17 +50,27 @@ case class Squad(
 
   }
 
+  for {
+    i <- 1 to 10
+  } {
+    println(i)
+  }
+
+  val result = for {
+    i <- (1 to 10).toList
+    if i % 2 == 0
+  } yield i
+
   def fireOnFoes: Unit = {
-    for {
+    val hSquad = for {
       eSquad <- World.squadList
       if eSquad.side != side
-      if eSquad.location.x < location.x + 5
-      if eSquad.location.x > location.x - 5
-      if eSquad.location.y < location.x + 5
-      if eSquad.location.y > location.x - 5
-    } {
-      println("fire on " + eSquad)
-      eSquad.health -= 1
+      if location.distanceFrom(eSquad.location) < 5
+    } yield eSquad
+
+    hSquad.headOption foreach { squad =>
+      println("fire on " + squad)
+      squad.health -= 1
     }
 
   }

@@ -16,6 +16,11 @@ case class Location(x: Int, y: Int) {
   def +(delta: Delta): Location = {
     Location(x + delta.dx, y + delta.dy)
   }
+  def distanceFrom(oLocation: Location): Int = {
+    val dx = oLocation.x - x
+    val dy = oLocation.y - y
+    Math.sqrt(dx ^ 2 + dy ^ 2).ceil.toInt
+  }
 }
 
 case class Delta(dx: Int, dy: Int) {
