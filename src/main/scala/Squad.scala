@@ -1,7 +1,7 @@
 import processing.core.{PApplet, PImage}
 
 case class Squad(
-    var nOfUnits: Int,
+    var health: Int,
     var morale: Int,
     var location: Location,
     var side: Int,
@@ -33,6 +33,7 @@ case class Squad(
     p.image(Squad.Trawler, location.x * 16, location.y * 16, 16, 16)
 
   }
+
   def moveSquad(): Unit = {
 
     for {
@@ -48,18 +49,19 @@ case class Squad(
     }
 
   }
-  def fireOnFoes: Unit = {}
-  for {
-    eSquad <- World.squadList
-    if eSquad.side != side
-    if eSquad.location.x < location.x + 5
-    if eSquad.location.x > location.x - 5
-    if eSquad.location.y < location.x + 5
-    if eSquad.location.y > location.x - 5
-  } println(eSquad)
 
+  def fireOnFoes: Unit = {
+    for {
+      eSquad <- World.squadList
+      if eSquad.side != side
+      if eSquad.location.x < location.x + 5
+      if eSquad.location.x > location.x - 5
+      if eSquad.location.y < location.x + 5
+      if eSquad.location.y > location.x - 5
+    } println("fire on " + eSquad)
+
+  }
 }
-
 object Squad {
   var Trawler: PImage = _
   def loadImages(p: PApplet): Unit = {
