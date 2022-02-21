@@ -53,6 +53,7 @@ class Defence extends PApplet {
       World.selectedUnits.setDestinations(this)
     }
     if (mouseButton == 37) {
+
       if (
         event.isShiftDown && !World.selectedUnits.units.contains(
           World.findSquad(
@@ -89,7 +90,6 @@ class Defence extends PApplet {
       tTick = (tTick + 1) % 10
       time = currentTime
       World.squadList.foreach(squad => squad.moveSquad())
-      println(World.selectedUnits.formationPoints)
     }
   }
   def spawnFoe(): Unit = {

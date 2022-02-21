@@ -48,6 +48,15 @@ case class Squad(
     }
 
   }
+  def fireOnFoes: Unit = {}
+  for {
+    eSquad <- World.squadList
+    if eSquad.side != side
+    if eSquad.location.x < location.x + 5
+    if eSquad.location.x > location.x - 5
+    if eSquad.location.y < location.x + 5
+    if eSquad.location.y > location.x - 5
+  } println(eSquad)
 
 }
 
