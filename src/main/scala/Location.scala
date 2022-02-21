@@ -28,4 +28,7 @@ case class Delta(dx: Int, dy: Int) {
     if (dx == 0) Delta(dy, 0)
     else Delta(0, -dx)
   }
+  def moveByDelta(location: Location): Location = {
+    Location(location.x + dx, location.y + dy)
+  }
 }
