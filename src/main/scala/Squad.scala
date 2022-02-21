@@ -70,12 +70,13 @@ case class Squad(
 
     hSquad.headOption foreach { squad =>
       println("fire on " + squad)
+
       squad.health -= 1
     }
-
   }
 
 }
+
 object Squad {
   var Trawler: PImage = _
   def loadImages(p: PApplet): Unit = {
