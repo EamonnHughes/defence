@@ -1,17 +1,24 @@
 import processing.core.PApplet
 
 case class Projectile(
-    var location: Location,
+    var locationX: Int,
+    var locationY: Int,
     damage: Int,
-    var delta: Delta,
-    target: Location
+    var deltaX: Int,
+    var deltaY: Int,
+    targetX: Int,
+    targetY: Int
 ) {
   def moveProjectile: Unit = {
-    location = delta.moveByDelta(location)
+    locationX += deltaX
+    locationY += deltaY
   }
   def draw(p: PApplet): Unit = {
     p.fill(255, 75, 0)
-    p.ellipse(location.x * 16, location.y * 16, 8, 8)
+    p.ellipse(locationX, locationY, 4, 4)
   }
-  def setDelta: Unit = {}
+  def setDelta: Unit = {
+    deltaX = 1 - 1 / (targetX - locationX)
+    deltaY = 1 - 1 / (targetY - locationY)
+  }
 }
