@@ -1,6 +1,8 @@
 import processing.core.PApplet
 
 case class Projectile(
+    var startX: Int,
+    var startY: Int,
     var locationX: Int,
     var locationY: Int,
     damage: Int,
@@ -18,7 +20,7 @@ case class Projectile(
     p.ellipse(locationX, locationY, 4, 4)
   }
   def setDelta: Unit = {
-    deltaX = 1 - 1 / (targetX - locationX)
-    deltaY = 1 - 1 / (targetY - locationY)
+    deltaX = 1 - 1 / (targetX - startX)
+    deltaY = 1 - 1 / (targetY - startY)
   }
 }
