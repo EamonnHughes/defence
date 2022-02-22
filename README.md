@@ -1,2 +1,2 @@
 # defence
-a game
+classic rts in the genre of dune II
