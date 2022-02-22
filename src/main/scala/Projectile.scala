@@ -20,7 +20,12 @@ case class Projectile(
     p.ellipse(locationX, locationY, 4, 4)
   }
   def setDelta: Unit = {
-    deltaX = 1 - 1 / (targetX - startX)
-    deltaY = 1 - 1 / (targetY - startY)
+    deltaX = (targetX - startX) / Location(startX, startY).distanceFrom(
+      Location(targetX, targetY)
+    )
+    deltaY = (targetY - startY) / Location(startX, startY).distanceFrom(
+      Location(targetX, targetY)
+    )
   }
+  def checkForDead: Boolean = {}
 }
