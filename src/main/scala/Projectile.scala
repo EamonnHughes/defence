@@ -27,5 +27,7 @@ case class Projectile(
       Location(targetX, targetY)
     )
   }
-  def checkForDead: Boolean = {}
+  def checkForDead: Unit = {
+    if(locationX == targetX && locationY == targetY)
+  }
 }
