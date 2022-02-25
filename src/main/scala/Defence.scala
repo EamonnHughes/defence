@@ -94,6 +94,7 @@ class Defence extends PApplet {
       time = currentTime
       World.squadList.foreach(squad => squad.moveSquad())
       World.squadList = World.squadList.filter(unit => unit.health > 0)
+      checkForDead
 
     }
     if (tTick % 2 == 0) {
@@ -103,6 +104,12 @@ class Defence extends PApplet {
   def spawnFoe(): Unit = {
     World.squadList =
       Squad(10, 4, Location(2, 2), 1, Location(2, 2)) :: World.squadList
+  }
+
+  def checkForDead: Unit = {
+    World.projectileList = World.projectileList.filterNot(unit =>
+      unit.locationX == unit.targetX && unit.locationY == unit.targetY
+    )
   }
 
 }
