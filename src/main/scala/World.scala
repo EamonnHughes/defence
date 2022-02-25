@@ -1,5 +1,5 @@
 object World {
-  var squadList =
+  var squadList = {
     List(
       Squad(10, 4, Location(16, 16), 0, Location(16, 16)),
       Squad(10, 4, Location(16, 14), 0, Location(16, 14)),
@@ -38,6 +38,8 @@ object World {
       Squad(10, 4, Location(17, 5), 0, Location(17, 5))
     )
 
+  }
+  var destinations = List[Location]
   var terrain = List(
     Room(Location(2, 2), 16, 16),
     Room(Location(18, 3), 2, 1),

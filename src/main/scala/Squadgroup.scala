@@ -8,6 +8,7 @@ case class Squadgroup(
 
   def setDestinations(p: PApplet): Unit = {
     val dest = Location((p.mouseX / 16).floor.toInt, (p.mouseY / 16).ceil.toInt)
+
     val ll = Spiral.lazyList(dest)
 
     formationPoints = ll

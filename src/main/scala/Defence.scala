@@ -111,6 +111,7 @@ class Defence extends PApplet {
       unit.locationX == unit.targetX && unit.locationY == unit.targetY
     )
   }
+  def updateDests: Unit = {}
 
 }
 object Defence extends App {
