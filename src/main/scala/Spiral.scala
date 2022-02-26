@@ -13,7 +13,6 @@ case class Spiral(var location: Location) {
       if (delta.dx == 0) {
         nextInterval += 1
       }
-
     }
     oLoc
   }

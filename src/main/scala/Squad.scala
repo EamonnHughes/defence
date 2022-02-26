@@ -75,7 +75,6 @@ case class Squad(
       }
       World.projectileList =
         Projectile(location, foe.location, 1) :: World.projectileList
-      foe.health -= 1
     }
   }
 
