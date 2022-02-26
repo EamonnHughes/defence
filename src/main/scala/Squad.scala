@@ -31,7 +31,6 @@ case class Squad(
     }
     p.rect(location.x * 16, location.y * 16, 16, 16)
     p.image(Squad.Trawler, location.x * 16, location.y * 16, 16, 16)
-
   }
 
   def moveSquad(): Unit = {
@@ -62,16 +61,21 @@ case class Squad(
   } yield i
 
   def fireOnFoes: Unit = {
-    val hSquad = for {
+    val foes = for {
       eSquad <- World.squadList
       if eSquad.side != side
       if location.distanceFrom(eSquad.location) < 5
     } yield eSquad
 
-    hSquad.headOption foreach { squad =>
-      println("fire on " + squad)
-
-      squad.health -= 1
+    foes.headOption foreach { foe =>
+      println("fire on " + foe)
+      if (location.distanceFrom(foe.location) == 0) {
+        println("ME: " + this)
+        println("IT: " + foe)
+      }
+      World.projectileList =
+        Projectile(location, foe.location, 1) :: World.projectileList
+      foe.health -= 1
     }
   }
 

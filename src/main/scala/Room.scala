@@ -4,7 +4,6 @@ case class Room(location: Location, dstx: Int, dsty: Int) {
     p.noStroke()
     p.fill(155, 155, 155)
     p.rect(location.x * 16, location.y * 16, dstx * 16, dsty * 16)
-
   }
   def isInRoom(loc: Location): Boolean = {
     if (

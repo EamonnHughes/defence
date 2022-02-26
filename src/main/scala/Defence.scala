@@ -37,7 +37,6 @@ class Defence extends PApplet {
       x <- (0 until 64).toList
       y <- (0 until 64).toList
       if World.terrain.exists(room => room.isInRoom(Location(x, y)))
-
     } yield Location(x, y)
     fill(255, 0, 255, 25)
     noStroke()
@@ -45,8 +44,6 @@ class Defence extends PApplet {
       rect(loc.x * 16, loc.y * 16, 16, 16)
     )
     World.projectileList.foreach(proj => proj.draw(this))
-    World.projectileList.foreach(proj => proj.setDelta)
-    World.projectileList.foreach(proj => proj.moveProjectile)
 
     updateTick()
   }
@@ -94,11 +91,13 @@ class Defence extends PApplet {
       time = currentTime
       World.squadList.foreach(squad => squad.moveSquad())
       World.squadList = World.squadList.filter(unit => unit.health > 0)
+      World.projectileList.foreach(proj => proj.moveProjectile)
       checkForDead
 
     }
-    if (tTick % 2 == 0) {
+    if (tTick % 5 == 0) {
       World.squadList.foreach(squad => squad.fireOnFoes)
+
     }
   }
   def spawnFoe(): Unit = {
@@ -107,8 +106,8 @@ class Defence extends PApplet {
   }
 
   def checkForDead: Unit = {
-    World.projectileList =
-      World.projectileList.filterNot(unit => unit.location == unit.target)
+    // World.projectileList =
+    // World.projectileList.filterNot(unit => unit.location == unit.target)
   }
   def updateDests: Unit = {}
 

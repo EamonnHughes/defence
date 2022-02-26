@@ -1,4 +1,4 @@
-case class Location(x: Int, y: Int) {
+case class Location(x: Float, y: Float) {
   def findAdjacents: List[Location] = {
     val adj = List(
       Location(x, y - 1),
@@ -17,14 +17,14 @@ case class Location(x: Int, y: Int) {
     Location(x + delta.dx, y + delta.dy)
   }
 
-  def distanceFrom(oLocation: Location): Int = {
+  def distanceFrom(oLocation: Location): Float = {
     val dx = oLocation.x - x
     val dy = oLocation.y - y
-    Math.sqrt(dx ^ 2 + dy ^ 2).ceil.toInt
+    Math.sqrt(dx * dx + dy * dy).toFloat
   }
 }
 
-case class Delta(dx: Int, dy: Int) {
+case class Delta(dx: Float, dy: Float) {
   def rotate: Delta = {
     if (dx == 0) Delta(dy, 0)
     else Delta(0, -dx)
