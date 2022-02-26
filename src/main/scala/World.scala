@@ -39,14 +39,14 @@ object World {
     )
 
   }
-  var destinations = List[Location]
+  var destinations = List.empty[Location]
   var terrain = List(
     Room(Location(2, 2), 16, 16),
     Room(Location(18, 3), 2, 1),
     Room(Location(20, 2), 16, 16)
   )
   var goToLocs = List.empty[Location]
-  var projectileList = List(Projectile(32, 32, 32, 32, 1, 0, 0, 256, 64))
+  var projectileList = List.empty[Projectile]
 
   var selectedUnits = Squadgroup(List.empty, List.empty, Location(5, 5))
   var unselectedUnits = Squadgroup(List.empty, List.empty, Location(5, 5))

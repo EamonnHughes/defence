@@ -107,9 +107,8 @@ class Defence extends PApplet {
   }
 
   def checkForDead: Unit = {
-    World.projectileList = World.projectileList.filterNot(unit =>
-      unit.locationX == unit.targetX && unit.locationY == unit.targetY
-    )
+    World.projectileList =
+      World.projectileList.filterNot(unit => unit.location == unit.target)
   }
   def updateDests: Unit = {}
 
