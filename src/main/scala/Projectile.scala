@@ -22,4 +22,5 @@ object Projectile {
     )
     Projectile(location, delta, damage)
   }
+  def checkHits
 }
