@@ -48,6 +48,14 @@ case class Squad(
     }
 
   }
+  def checkForP: Boolean = {
+    if (
+      World.projectileList.exists(proj =>
+        proj.location.x >= location.x * 16 && proj.location.x < location.x * 16 + 16 && proj.location.y >= location.y * 16 && proj.location.y < location.y * 16 + 16
+      )
+    ) true
+    else false
+  }
 
   for {
     i <- 1 to 10

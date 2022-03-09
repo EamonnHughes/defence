@@ -53,6 +53,10 @@ object World {
   def findSquad(location: Location): Squad = { // nulls
     squadList.find(thing => thing.location == location).orNull
   }
+
+  def checkHits: Unit = {
+    World.squadList = World.squadList.filterNot(squad => squad.checkForP)
+  }
   var navigableLocations = List.empty[Location]
 
 }

@@ -22,7 +22,5 @@ object Projectile {
     )
     Projectile(location, delta, damage)
   }
-  def checkHits: Unit = {
-    World.squadList = World.squadList.filter(squad => ())
-  }
+
 }
