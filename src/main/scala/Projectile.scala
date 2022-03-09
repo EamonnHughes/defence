@@ -13,8 +13,10 @@ case class Projectile(
     p.ellipse(location.x * 16, location.y * 16, 4, 4)
   }
   def checkForHit: Unit = {
-    if (World.squadList.exists(squad => ){
-
+    var hUnits = World.squadList.find(squad => squad.contains(location))
+    for (unit <- hUnits) {
+      unit.health -= 1
+      World.projectileList = World.projectileList.filterNot(p => p == this)
     }
   }
 }

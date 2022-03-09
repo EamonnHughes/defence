@@ -93,7 +93,7 @@ class Defence extends PApplet {
       World.squadList = World.squadList.filter(unit => unit.health > 0)
       World.projectileList.foreach(proj => proj.moveProjectile)
       checkForDead
-
+      World.projectileList.foreach(p => p.checkForHit)
     }
     if (tTick % 5 == 0) {
       World.squadList.foreach(squad => squad.fireOnFoes)
