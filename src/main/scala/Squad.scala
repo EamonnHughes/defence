@@ -59,6 +59,12 @@ case class Squad(
     i <- (1 to 10).toList
     if i % 2 == 0
   } yield i
+  def contains(elocation: Location): Boolean = {
+    if (
+      elocation.x >= this.location.x * 16 && elocation.x < this.location.x * 16 + 16 && elocation.y >= this.location.y * 16 && elocation.y < this.location.y * 16 + 16
+    ) true
+    else false
+  }
 
   def fireOnFoes: Unit = {
     val foes = for {
