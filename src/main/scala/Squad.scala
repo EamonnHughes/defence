@@ -41,27 +41,14 @@ case class Squad(
       val nextLoc = path.getHead
       if (!World.squadList.exists(squad => squad.location == nextLoc)) {
         location = nextLoc
-
         pathToDest = path.tail
       }
-
     }
-
   }
 
-  for {
-    i <- 1 to 10
-  } {
-    println(i)
-  }
-
-  val result = for {
-    i <- (1 to 10).toList
-    if i % 2 == 0
-  } yield i
   def contains(elocation: Location): Boolean = {
     if (
-      elocation.x >= this.location.x * 16 && elocation.x < this.location.x * 16 + 16 && elocation.y >= this.location.y * 16 && elocation.y < this.location.y * 16 + 16
+      elocation.x >= this.location.x && elocation.x < this.location.x + 1 && elocation.y >= this.location.y && elocation.y < this.location.y + 1
     ) true
     else false
   }

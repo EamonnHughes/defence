@@ -3,7 +3,8 @@ import processing.core.PApplet
 case class Projectile(
     var location: Location,
     var delta: Delta,
-    damage: Int
+    damage: Int,
+    var tick: Int
 ) {
   def moveProjectile: Unit = {
     location = location + delta
@@ -18,6 +19,8 @@ case class Projectile(
       unit.health -= 1
       World.projectileList = World.projectileList.filterNot(p => p == this)
     }
+    if (tick == 5)
+      World.projectileList = World.projectileList.filterNot(p => p == this)
   }
 }
 
@@ -27,7 +30,7 @@ object Projectile {
       (target.x - location.x) / location.distanceFrom(target),
       (target.y - location.y) / location.distanceFrom(target)
     )
-    Projectile(location, delta, damage)
+    Projectile(location, delta, damage, 0)
   }
 
 }
