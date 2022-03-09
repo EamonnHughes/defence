@@ -12,6 +12,7 @@ case class Projectile(
     p.fill(255, 75, 0)
     p.ellipse(location.x * 16, location.y * 16, 4, 4)
   }
+  def checkForHit: Unit = {}
 }
 
 object Projectile {
