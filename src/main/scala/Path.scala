@@ -21,7 +21,7 @@ case class Path(points: List[Location]) {
       if visCells.add(loc)
       if World.terrain.exists(room => room.isInRoom(loc))
       if World.unselectedUnits.units.forall(unit => unit.location != loc)
-      //if endlocations
+      //if endpoints
     } yield add(loc)
   }
 }
