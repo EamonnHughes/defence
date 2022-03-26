@@ -43,6 +43,7 @@ class Defence extends PApplet {
     World.navigableLocations.foreach(loc =>
       rect(loc.x * 16, loc.y * 16, 16, 16)
     )
+    World.walls.foreach(wall => wall.draw(this))
     World.projectileList.foreach(proj => proj.draw(this))
 
     updateTick()
