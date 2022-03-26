@@ -50,6 +50,7 @@ object World {
 
   var selectedUnits = Squadgroup(List.empty, List.empty, Location(5, 5))
   var unselectedUnits = Squadgroup(List.empty, List.empty, Location(5, 5))
+  var walls = List(Wall(Location(8, 8), 2, 2))
   def findSquad(location: Location): Squad = { // nulls
     squadList.find(thing => thing.location == location).orNull
   }
