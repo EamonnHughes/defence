@@ -15,14 +15,16 @@ case class Path(points: List[Location]) {
   def add(location: Location): Path = {
     Path(location :: points)
   }
-  def extendPaths(visCells: mutable.Set[Location]): List[Path] = {
+  def extendPaths(visCells: mutable.Set[Location], unit: Squad): List[Path] = {
+    var unitsExcluding =
+      World.unselectedUnits.units.filterNot(squad => squad == unit)
     for {
       loc <- getHead.findAdjacents
       if visCells.add(loc)
       if World.terrain.exists(room => room.isInRoom(loc))
       if World.walls.forall(wall => wall.checkOutside(loc))
-      if World.unselectedUnits.units.forall(unit => unit.location != loc)
-      if !World.selectedUnits.units.exists(unit => unit.destination == loc)
+      if unitsExcluding.forall(squad => squad != loc)
+      if World.squadList.forall(unit => unit.destination != loc)
     } yield add(loc)
   }
 }

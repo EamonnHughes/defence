@@ -16,7 +16,9 @@ case class Squad(
         .exists(room => room.isInRoom(loc))
     ) {
       destination = loc
-    } else { destination = location }
+    } else {
+      destination = location
+    }
     pathToDest =
       Navigation.findPath(destination, location).flatMap(path => path.tail)
   }
@@ -39,7 +41,7 @@ case class Squad(
   }
 
   def moveSquad(): Unit = {
-
+    println(pathToDest)
     for {
       path <- pathToDest
     } {

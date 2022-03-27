@@ -9,7 +9,7 @@ object Navigation {
     while (!paths.exists(path => path.getHead == finish) && paths.nonEmpty) {
       paths = for {
         path <- paths
-        newPath <- path.extendPaths(visitedCells)
+        newPath <- path.extendPaths(visitedCells, World.findSquad(start))
       } yield {
         newPath
       }
