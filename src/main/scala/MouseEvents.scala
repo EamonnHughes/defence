@@ -39,4 +39,5 @@ object MouseEvents {
       }
     }
   }
+  def mouseDragged(event: MouseEvent, p: PApplet): Unit = {}
 }
