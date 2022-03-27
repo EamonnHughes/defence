@@ -45,7 +45,10 @@ class Defence extends PApplet {
     MouseEvents.mousePressed(event, this)
   }
   override def mouseDragged(event: MouseEvent): Unit = {
-    MouseEvents.mouseDragged(event, this)
+    MouseEvents.mouseDragged(event)
+  }
+  override def mouseReleased(event: MouseEvent): Unit = {
+    MouseEvents.mouseReleased
   }
 
   def updateTick(): Unit = {

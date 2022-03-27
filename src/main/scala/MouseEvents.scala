@@ -44,8 +44,7 @@ object MouseEvents {
       }
     }
   }
-  def mouseDragged(event: MouseEvent, p: PApplet): Unit = {
-    val mouseButton = event.getButton
+  def mouseDragged(event: MouseEvent): Unit = {
     val mouseX = event.getX
     val mouseY = event.getY
 
@@ -59,5 +58,9 @@ object MouseEvents {
       p.fill(200, 200, 0, 25)
       p.rect(start.x, start.y, end.x - start.x, end.y - start.y)
     }
+  }
+  def mouseReleased: Unit = {
+    dragStart = None
+    dragEnd = None
   }
 }
