@@ -75,6 +75,7 @@ case class Squad(
         Projectile(location, foe.location, 1) :: World.projectileList
     }
   }
+  def buildWall: Unit = {}
 
 }
 

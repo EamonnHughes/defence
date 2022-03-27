@@ -48,42 +48,7 @@ class Defence extends PApplet {
 
     updateTick()
   }
-  override def mousePressed(event: MouseEvent): Unit = {
-
-    if (mouseButton == 39) {
-      World.selectedUnits.setDestinations(this)
-    }
-    if (mouseButton == 37) {
-
-      if (
-        event.isShiftDown && !World.selectedUnits.units.contains(
-          World.findSquad(
-            Location(mouseX / 16, mouseY / 16)
-          )
-        ) && World.findSquad(
-          Location(mouseX / 16, mouseY / 16)
-        ) != null
-      ) {
-        World.selectedUnits.units = World.findSquad(
-          Location(mouseX / 16, mouseY / 16)
-        ) :: World.selectedUnits.units
-      } else if (
-        !event.isShiftDown && World.findSquad(
-          Location(mouseX / 16, mouseY / 16)
-        ) != null
-      ) {
-        World.selectedUnits.units =
-          World.findSquad(Location(mouseX / 16, mouseY / 16)) :: Nil
-      } else if (
-        World.findSquad(
-          Location(mouseX / 16, mouseY / 16)
-        ) == null
-      ) {
-        World.selectedUnits.units = Nil
-      }
-    }
-
-  }
+  override def mousePressed(event: MouseEvent): Unit = {}
 
   def updateTick(): Unit = {
     val currentTime = System.currentTimeMillis
