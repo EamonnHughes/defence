@@ -2,10 +2,15 @@ import processing.core.PApplet
 import processing.event.MouseEvent
 
 object MouseEvents {
+
+  var dragStart: Option[Location] = None
+  var dragEnd: Option[Location] = None
+
   def mousePressed(event: MouseEvent, p: PApplet): Unit = {
     val mouseButton = event.getButton
     val mouseX = event.getX
     val mouseY = event.getY
+    dragStart = Some(Location(mouseX, mouseY))
     if (mouseButton == 39) {
       World.selectedUnits.setDestinations(p)
     }
@@ -39,5 +44,20 @@ object MouseEvents {
       }
     }
   }
-  def mouseDragged(event: MouseEvent, p: PApplet): Unit = {}
+  def mouseDragged(event: MouseEvent, p: PApplet): Unit = {
+    val mouseButton = event.getButton
+    val mouseX = event.getX
+    val mouseY = event.getY
+
+    dragEnd = Some(Location(mouseX, mouseY))
+  }
+  def dragDraw(p: PApplet): Unit = {
+    for {
+      start <- dragStart
+      end <- dragEnd
+    } {
+      p.fill(200, 200, 0, 25)
+      p.rect(start.x, start.y, end.x - start.x, end.y - start.y)
+    }
+  }
 }

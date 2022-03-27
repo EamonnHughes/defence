@@ -38,11 +38,16 @@ class Defence extends PApplet {
     noStroke()
     World.walls.foreach(wall => wall.draw(this))
     World.projectileList.foreach(proj => proj.draw(this))
+    MouseEvents.dragDraw(this)
     updateTick()
   }
   override def mousePressed(event: MouseEvent): Unit = {
     MouseEvents.mousePressed(event, this)
   }
+  override def mouseDragged(event: MouseEvent): Unit = {
+    MouseEvents.mouseDragged(event, this)
+  }
+
   def updateTick(): Unit = {
     val currentTime = System.currentTimeMillis
     if (currentTime > time + 100) {
