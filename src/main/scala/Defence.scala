@@ -20,18 +20,14 @@ class Defence extends PApplet {
     World.unselectedUnits.units = World.squadList.filterNot(Squad =>
       World.selectedUnits.units.contains(Squad)
     )
-
     background(100, 100, 100)
-
     World.terrain.foreach(terrain => terrain.draw(this))
     fill(0, 0, 0)
     World.selectedUnits.formationPoints.foreach(point =>
       rect(point.x * 16, point.y * 16, 2, 2)
     )
-
     fill(255, 0, 0, 50)
     World.squadList.foreach(squad => squad.draw(this))
-
     World.squadList.foreach(squad => squad.navigateTo(squad.destination))
     World.navigableLocations = for {
       x <- (0 until 64).toList
@@ -42,13 +38,11 @@ class Defence extends PApplet {
     noStroke()
     World.walls.foreach(wall => wall.draw(this))
     World.projectileList.foreach(proj => proj.draw(this))
-
     updateTick()
   }
   override def mousePressed(event: MouseEvent): Unit = {
     MouseEvents.mousePressed(event, this)
   }
-
   def updateTick(): Unit = {
     val currentTime = System.currentTimeMillis
     if (currentTime > time + 100) {
@@ -57,26 +51,13 @@ class Defence extends PApplet {
       World.squadList.foreach(squad => squad.moveSquad())
       World.squadList = World.squadList.filter(unit => unit.health > 0)
       World.projectileList.foreach(proj => proj.moveProjectile)
-      checkForDead
       World.projectileList.foreach(p => p.checkForHit)
       World.projectileList.foreach(p => p.tick += 1)
     }
     if (tTick % 5 == 0) {
       World.squadList.foreach(squad => squad.fireOnFoes)
-
     }
   }
-  def spawnFoe(): Unit = {
-    World.squadList =
-      Squad(10, 4, Location(2, 2), 1, Location(2, 2)) :: World.squadList
-  }
-
-  def checkForDead: Unit = {
-    // World.projectileList =
-    // World.projectileList.filterNot(unit => unit.location == unit.target)
-  }
-  def updateDests: Unit = {}
-
 }
 object Defence extends App {
   PApplet.main(classOf[Defence])

@@ -54,6 +54,10 @@ object World {
   def findSquad(location: Location): Squad = { // nulls
     squadList.find(thing => thing.location == location).orNull
   }
+  def spawnFoe(): Unit = {
+    World.squadList =
+      Squad(10, 4, Location(2, 2), 1, Location(2, 2)) :: World.squadList
+  }
 
   var navigableLocations = List.empty[Location]
 
