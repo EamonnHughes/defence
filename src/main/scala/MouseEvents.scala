@@ -60,7 +60,16 @@ object MouseEvents {
     }
   }
   def mouseReleased: Unit = {
+    for {
+      start <- dragStart
+      end <- dragEnd
+    } {
+      World.selectedUnits.units = World.squadList.filter(Squad =>
+        Squad.location.x * 16 < end.x && Squad.location.x * 16 >= start.x && Squad.location.y * 16 < end.y && Squad.location.y * 16 >= start.y
+      )
+    }
     dragStart = None
     dragEnd = None
+
   }
 }
