@@ -1,12 +1,13 @@
+import processing.core.PApplet
 import processing.event.MouseEvent
 
 object MouseEvents {
-  def mousePressed(event: MouseEvent): Unit = {
+  def mousePressed(event: MouseEvent, p: PApplet): Unit = {
     val mouseButton = event.getButton
     val mouseX = event.getX
     val mouseY = event.getY
     if (mouseButton == 39) {
-      World.selectedUnits.setDestinations(this)
+      World.selectedUnits.setDestinations(p)
     }
     if (mouseButton == 37) {
 

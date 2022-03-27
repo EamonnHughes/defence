@@ -48,7 +48,9 @@ class Defence extends PApplet {
 
     updateTick()
   }
-  override def mousePressed(event: MouseEvent): Unit = {}
+  override def mousePressed(event: MouseEvent): Unit = {
+    MouseEvents.mousePressed(event, this)
+  }
 
   def updateTick(): Unit = {
     val currentTime = System.currentTimeMillis
