@@ -11,7 +11,12 @@ case class Squad(
   var pathToDest = Option.empty[Path]
 
   def navigateTo(loc: Location): Unit = {
-    destination = loc
+    if (
+      World.walls.forall(wall => wall.checkOutside(loc)) && World.terrain
+        .exists(room => room.isInRoom(loc))
+    ) {
+      destination = loc
+    } else { destination = location }
     pathToDest =
       Navigation.findPath(destination, location).flatMap(path => path.tail)
   }

@@ -20,7 +20,7 @@ case class Path(points: List[Location]) {
       loc <- getHead.findAdjacents
       if visCells.add(loc)
       if World.terrain.exists(room => room.isInRoom(loc))
-      if World.walls.forall(wall => wall.checkOutSide(loc))
+      if World.walls.forall(wall => wall.checkOutside(loc))
       if World.unselectedUnits.units.forall(unit => unit.location != loc)
       if !World.selectedUnits.units.exists(unit => unit.destination == loc)
     } yield add(loc)
