@@ -40,9 +40,6 @@ class Defence extends PApplet {
     } yield Location(x, y)
     fill(255, 0, 255, 25)
     noStroke()
-    World.navigableLocations.foreach(loc =>
-      rect(loc.x * 16, loc.y * 16, 16, 16)
-    )
     World.walls.foreach(wall => wall.draw(this))
     World.projectileList.foreach(proj => proj.draw(this))
 
