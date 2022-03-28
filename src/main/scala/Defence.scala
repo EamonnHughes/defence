@@ -39,6 +39,7 @@ class Defence extends PApplet {
     World.walls.foreach(wall => wall.draw(this))
     World.projectileList.foreach(proj => proj.draw(this))
     MouseEvents.dragDraw(this)
+    UserInterface.draw(this)
     updateTick()
   }
   override def mousePressed(event: MouseEvent): Unit = {
